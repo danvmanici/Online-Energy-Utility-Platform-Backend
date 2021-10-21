@@ -28,11 +28,11 @@ checkstyle:
     - mvn checkstyle:check
 
 variables:
-    DB_IP: ec2-54-195-195-81.eu-west-1.compute.amazonaws.com
+    DB_IP: ec2-54-217-15-9.eu-west-1.compute.amazonaws.com
     DB_PORT: 5432
-    DB_USER: wxmrocuehxsfln
-    DB_PASSWORD: 5e904ca4ee9efbaf18cf6352c1754c704c216507dd5e383ee35b386d69c4eb0f
-    DB_DBNAME: dbu1ia0aq9ltcq
+    DB_USER: jmlrmpjpmyrckp
+    DB_PASSWORD: 6b2fd654505815651316cc18eda51887ef75af378ffc24b31e2d5cb31e38cf14
+    DB_DBNAME: d5cb77kuvo12vf
     
 deploy:
   stage: deploy
@@ -41,6 +41,6 @@ deploy:
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - gem install dpl
-    - dpl --provider=heroku --app=mvd-ds2021-30642-backend --api-key=$HEROKU_API_KEY
+    - dpl --provider=heroku --app=mvd-back --api-key=$HEROKU_API_KEY
   only:
     - production
