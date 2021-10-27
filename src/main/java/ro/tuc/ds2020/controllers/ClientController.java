@@ -36,7 +36,8 @@ public class ClientController {
 
     @PostMapping("/insert")
     public ResponseEntity<UUID> insertProsumer(@Valid @RequestBody ClientDTO clientDTO) {
-        UUID clientID = clientService.insert(clientDTO);
+        UUID clientID = clientService.
+                insert(clientDTO);
         return new ResponseEntity<>(clientID, HttpStatus.CREATED);
     }
 
@@ -47,8 +48,10 @@ public class ClientController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteClient(@PathVariable UUID id){
-        clientService.delete(id);
+    public ResponseEntity<UUID> deleteClient(@PathVariable UUID id){
+
+        UUID clientID = clientService.delete(id);
+        return new ResponseEntity<>(clientID, HttpStatus.OK);
     }
 
     @PutMapping("/update")
