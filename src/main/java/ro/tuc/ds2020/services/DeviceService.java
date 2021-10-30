@@ -57,9 +57,10 @@ public class DeviceService {
         return smartDevice.getId();
     }
 
-    public void delete(UUID id) {
+    public UUID delete(UUID id) {
         smartDeviceRepository.deleteById(id);
         LOGGER.debug("SmartDevice with id {} was deleted in db", id);
+        return id;
     }
 
     public UUID update(DeviceDTO smartDevice){
