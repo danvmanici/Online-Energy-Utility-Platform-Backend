@@ -35,4 +35,10 @@ public class UserController {
                 insert(userDTO);
         return new ResponseEntity<>(userID, HttpStatus.CREATED);
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<UUID> loginUser(@Valid @RequestBody UserDTO userDTO) {
+        UserDTO userID = userService.findUserByUsernamePassword(userDTO.getUsername(), userDTO.getPassword());
+        return new ResponseEntity<>(userID.getId(), HttpStatus.OK);
+    }
 }
