@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.tuc.ds2020.dtos.UserDTO;
+import ro.tuc.ds2020.entities.User;
 import ro.tuc.ds2020.services.UserService;
 
 import javax.validation.Valid;
@@ -37,8 +38,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> loginUser(@Valid @RequestBody UserDTO userDTO) {
-        String user_role = userService.findUserByUsernamePassword(userDTO.getUsername(), userDTO.getPassword());
-        return new ResponseEntity<>(user_role, HttpStatus.OK);
+    public ResponseEntity<UserDTO> loginUser(@Valid @RequestBody UserDTO userDTO) {
+        UserDTO user = userService.findUserByUsernamePassword(userDTO.getUsername(), userDTO.getPassword());
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }

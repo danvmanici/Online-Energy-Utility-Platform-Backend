@@ -12,7 +12,7 @@ public class UserDTO {
     private String username;
     @NotNull
     private String password;
-    @NotNull
+
     private String role;
 
     public UserDTO() {
