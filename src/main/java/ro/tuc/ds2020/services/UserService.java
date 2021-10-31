@@ -33,13 +33,13 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public UserDTO findUserByUsernamePassword(String username, String password) {
+    public String findUserByUsernamePassword(String username, String password) {
         Optional<User> prosumerOptional = Optional.ofNullable(userRepository.findUsernamePassword(username, password));
         if (!prosumerOptional.isPresent()) {
             LOGGER.error("user with id {} was not found in db", username);
             throw new ResourceNotFoundException(User.class.getSimpleName() + " with id: " + username);
         }
-        return UserBuilder.toUserDTO(prosumerOptional.get());
+        return UserBuilder.toUserDTO(prosumerOptional.get()).getRole();
     }
 
     public UUID insert(UserDTO userDTO) {
