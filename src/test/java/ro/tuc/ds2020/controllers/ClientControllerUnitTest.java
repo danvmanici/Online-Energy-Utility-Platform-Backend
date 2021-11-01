@@ -34,17 +34,7 @@ public class ClientControllerUnitTest extends Ds2020TestConfig {
                 .andExpect(status().isCreated());
     }
 
-    @Test
-    public void insertPersonTestFailsDueToAge() throws Exception {
-        ObjectMapper objectMapper = new ObjectMapper();
-        Date firstDate1 = new Date(1999, 10, 10);
-        ClientDTO personDTO = new ClientDTO("John", "Somewhere Else street", firstDate1);
 
-        mockMvc.perform(post("/person")
-                .content(objectMapper.writeValueAsString(personDTO))
-                .contentType("application/json"))
-                .andExpect(status().isBadRequest());
-    }
 
     @Test
     public void insertPersonTestFailsDueToNull() throws Exception {
