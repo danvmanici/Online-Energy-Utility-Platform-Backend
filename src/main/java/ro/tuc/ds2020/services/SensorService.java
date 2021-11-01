@@ -55,10 +55,16 @@ public class SensorService {
         return sensor.getId();
     }
 
+<<<<<<< HEAD
+    public void delete(UUID id) {
+        sensorRepository.deleteById(id);
+        LOGGER.debug("Sensor with id {} was deleted in db", id);
+=======
     public UUID delete(UUID id) {
         sensorRepository.deleteById(id);
         LOGGER.debug("Sensor with id {} was deleted in db", id);
         return id;
+>>>>>>> main
     }
 
     public UUID update(SensorDTO sensor){

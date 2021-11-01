@@ -41,11 +41,14 @@ public class ClientService {
         return ClientBuilder.toClientDTO(prosumerOptional.get());
     }
 
+<<<<<<< HEAD
+=======
     public ClientDTO findClientByName(String name) {
         Client prosumerOptional = clientRepository.findByName(name);
         return ClientBuilder.toClientDTO(prosumerOptional);
     }
 
+>>>>>>> main
     public UUID insert(ClientDTO clientDTO) {
         Client client = ClientBuilder.toEntity(clientDTO);
         client = clientRepository.save(client);
@@ -53,10 +56,16 @@ public class ClientService {
         return client.getId();
     }
 
+<<<<<<< HEAD
+    public void delete(UUID id) {
+        clientRepository.deleteById(id);
+        LOGGER.debug("client with id {} was deleted in db", id);
+=======
     public UUID delete(UUID id) {
         clientRepository.deleteById(id);
         LOGGER.debug("client with id {} was deleted in db", id);
         return id;
+>>>>>>> main
     }
 
     public UUID update(ClientDTO client){
