@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://mvd-ds2021-30642-frontend.herokuapp.com")
 public class IndexController {
 
     @GetMapping(value = "/")

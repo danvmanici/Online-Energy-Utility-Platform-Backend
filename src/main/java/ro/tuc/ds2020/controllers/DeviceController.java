@@ -13,7 +13,7 @@ import java.util.UUID;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://mvd-ds2021-30642-frontend.herokuapp.com")
 @RequestMapping(value = "/device")
 public class DeviceController {
 
