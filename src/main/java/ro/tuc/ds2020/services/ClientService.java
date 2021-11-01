@@ -41,6 +41,11 @@ public class ClientService {
         return ClientBuilder.toClientDTO(prosumerOptional.get());
     }
 
+    public ClientDTO findClientByName(String name) {
+        Client prosumerOptional = clientRepository.findByName(name);
+        return ClientBuilder.toClientDTO(prosumerOptional);
+    }
+
     public UUID insert(ClientDTO clientDTO) {
         Client client = ClientBuilder.toEntity(clientDTO);
         client = clientRepository.save(client);

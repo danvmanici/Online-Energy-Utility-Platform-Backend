@@ -14,7 +14,7 @@ public interface ClientRepository extends JpaRepository<Client, UUID> {
     /**
      * Example: JPA generate Query by Field
      */
-    List<Client> findByName(String name);
+    Client findByName(String name);
 
     /**
      * Example: Write Custom Query

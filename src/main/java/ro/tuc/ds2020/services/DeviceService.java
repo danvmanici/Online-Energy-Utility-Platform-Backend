@@ -48,6 +48,8 @@ public class DeviceService {
         return DeviceBuilder.toSmartDeviceDTO(prosumerOptional.get());
     }
 
+
+
     public UUID insert(DeviceDTO smartDeviceDTO) {
         Device smartDevice = DeviceBuilder.toEntity(smartDeviceDTO);
         Client client =clientRepository.findById(smartDeviceDTO.getClient_id()).get();

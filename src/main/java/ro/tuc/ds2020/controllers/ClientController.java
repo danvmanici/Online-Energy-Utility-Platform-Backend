@@ -47,6 +47,12 @@ public class ClientController {
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{name}")
+    public ResponseEntity<ClientDTO> getClientName(@PathVariable("name") String name) {
+        ClientDTO dto = clientService.findClientByName(name);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<UUID> deleteClient(@PathVariable UUID id){
 
