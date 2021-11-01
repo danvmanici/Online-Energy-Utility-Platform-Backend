@@ -16,7 +16,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
-@CrossOrigin(origins = "https://mvd-ds2021-30642-frontend.herokuapp.com")
+@CrossOrigin
 @RequestMapping(value = "/sensor")
 public class SensorController {
 
