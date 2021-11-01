@@ -34,7 +34,6 @@ public class ClientControllerUnitTest extends Ds2020TestConfig {
                 .andExpect(status().isCreated());
     }
 
-<<<<<<< HEAD:src/test/java/ro/tuc/ds2020/controllers/ClientControllerUnitTest.java
     @Test
     public void insertPersonTestFailsDueToAge() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -46,8 +45,6 @@ public class ClientControllerUnitTest extends Ds2020TestConfig {
                 .contentType("application/json"))
                 .andExpect(status().isBadRequest());
     }
-=======
->>>>>>> main:src/test/java/ro/tuc/ds2020/controllers/PersonControllerUnitTest.java
 
     @Test
     public void insertPersonTestFailsDueToNull() throws Exception {

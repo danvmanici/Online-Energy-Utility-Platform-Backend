@@ -43,15 +43,10 @@ public class DeviceController {
     }
 
     @DeleteMapping("/delete/{id}")
-<<<<<<< HEAD
-    public void deleteSmartDevice(@PathVariable UUID id){
-        smartDeviceService.delete(id);
-=======
     public ResponseEntity<UUID> deleteSmartDevice(@PathVariable UUID id){
 
         UUID deviceID = smartDeviceService.delete(id);
         return new ResponseEntity<>(deviceID, HttpStatus.OK);
->>>>>>> main
     }
 
     @PutMapping("/update")
