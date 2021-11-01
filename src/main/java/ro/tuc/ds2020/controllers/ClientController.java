@@ -36,7 +36,12 @@ public class ClientController {
 
     @PostMapping("/insert")
     public ResponseEntity<UUID> insertProsumer(@Valid @RequestBody ClientDTO clientDTO) {
+<<<<<<< HEAD
         UUID clientID = clientService.insert(clientDTO);
+=======
+        UUID clientID = clientService.
+                insert(clientDTO);
+>>>>>>> main
         return new ResponseEntity<>(clientID, HttpStatus.CREATED);
     }
 
@@ -46,9 +51,23 @@ public class ClientController {
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
+<<<<<<< HEAD
     @DeleteMapping("/delete/{id}")
     public void deleteClient(@PathVariable UUID id){
         clientService.delete(id);
+=======
+    @GetMapping(value = "/{name}")
+    public ResponseEntity<ClientDTO> getClientName(@PathVariable("name") String name) {
+        ClientDTO dto = clientService.findClientByName(name);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<UUID> deleteClient(@PathVariable UUID id){
+
+        UUID clientID = clientService.delete(id);
+        return new ResponseEntity<>(clientID, HttpStatus.OK);
+>>>>>>> main
     }
 
     @PutMapping("/update")

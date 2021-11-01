@@ -48,6 +48,11 @@ public class DeviceService {
         return DeviceBuilder.toSmartDeviceDTO(prosumerOptional.get());
     }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> main
     public UUID insert(DeviceDTO smartDeviceDTO) {
         Device smartDevice = DeviceBuilder.toEntity(smartDeviceDTO);
         Client client =clientRepository.findById(smartDeviceDTO.getClient_id()).get();
@@ -57,9 +62,16 @@ public class DeviceService {
         return smartDevice.getId();
     }
 
+<<<<<<< HEAD
     public void delete(UUID id) {
         smartDeviceRepository.deleteById(id);
         LOGGER.debug("SmartDevice with id {} was deleted in db", id);
+=======
+    public UUID delete(UUID id) {
+        smartDeviceRepository.deleteById(id);
+        LOGGER.debug("SmartDevice with id {} was deleted in db", id);
+        return id;
+>>>>>>> main
     }
 
     public UUID update(DeviceDTO smartDevice){

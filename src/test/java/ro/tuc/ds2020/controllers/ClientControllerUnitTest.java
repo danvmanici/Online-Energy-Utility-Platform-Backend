@@ -28,12 +28,13 @@ public class ClientControllerUnitTest extends Ds2020TestConfig {
         Date firstDate1 = new Date(1999, 10, 10);
         ClientDTO personDTO = new ClientDTO("John", "Somewhere Else street", firstDate1);
 
-        mockMvc.perform(post("/person")
+        mockMvc.perform(post("/client/insert")
                 .content(objectMapper.writeValueAsString(personDTO))
                 .contentType("application/json"))
                 .andExpect(status().isCreated());
     }
 
+<<<<<<< HEAD:src/test/java/ro/tuc/ds2020/controllers/ClientControllerUnitTest.java
     @Test
     public void insertPersonTestFailsDueToAge() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -45,6 +46,8 @@ public class ClientControllerUnitTest extends Ds2020TestConfig {
                 .contentType("application/json"))
                 .andExpect(status().isBadRequest());
     }
+=======
+>>>>>>> main:src/test/java/ro/tuc/ds2020/controllers/PersonControllerUnitTest.java
 
     @Test
     public void insertPersonTestFailsDueToNull() throws Exception {
@@ -52,7 +55,7 @@ public class ClientControllerUnitTest extends Ds2020TestConfig {
         Date firstDate1 = new Date(1999, 10, 10);
         ClientDTO personDTO = new ClientDTO("John", null, firstDate1);
 
-        mockMvc.perform(post("/person")
+        mockMvc.perform(post("/client/insert")
                 .content(objectMapper.writeValueAsString(personDTO))
                 .contentType("application/json"))
                 .andExpect(status().isBadRequest());
