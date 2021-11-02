@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "https://mvd-ds2021-30642-backend.herokuapp.com/")
 @RequestMapping(value = "/user")
 public class UserController {
 
