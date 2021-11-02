@@ -19,6 +19,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 @CrossOrigin
 @RequestMapping(value = "/client")
+
 public class ClientController {
 
     private final ClientService clientService;
@@ -37,8 +38,7 @@ public class ClientController {
     @PostMapping("/insert")
     public ResponseEntity<UUID> insertProsumer(@Valid @RequestBody ClientDTO clientDTO) {
 
-        UUID clientID = clientService.
-                insert(clientDTO);
+        UUID clientID = clientService.insert(clientDTO);
         return new ResponseEntity<>(clientID, HttpStatus.CREATED);
     }
 
