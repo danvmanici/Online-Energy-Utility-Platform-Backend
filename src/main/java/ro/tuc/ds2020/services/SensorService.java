@@ -69,4 +69,10 @@ public class SensorService {
         oldSensor=sensorRepository.save(oldSensor);
         return  oldSensor.getId();
     }
+
+    public SensorDTO findSensorValue(String name) {
+   
+        return SensorBuilder.toSensorDTO(sensorRepository.findSensorValue(name));
+    }
+    
 }

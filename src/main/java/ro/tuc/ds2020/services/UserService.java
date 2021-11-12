@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import ro.tuc.ds2020.controllers.handlers.exceptions.model.ResourceNotFoundException;
 import ro.tuc.ds2020.dtos.UserDTO;
 import ro.tuc.ds2020.dtos.builders.UserBuilder;
+import ro.tuc.ds2020.entities.Sensor;
 import ro.tuc.ds2020.entities.User;
 import ro.tuc.ds2020.repositories.UserRepository;
 
@@ -48,4 +49,5 @@ public class UserService {
         LOGGER.debug("user with id {} was inserted in db", user.getId());
         return user.getId();
     }
+
 }

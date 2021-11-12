@@ -57,4 +57,12 @@ public class SensorController {
         UUID personID = sensorService.update(sensorDetailsDTO);
         return new ResponseEntity<>(personID, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/value/{name}")
+    public ResponseEntity<SensorDTO> getSensorValue(@PathVariable("name") String name) {
+        SensorDTO dto = sensorService.findSensorValue(name);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
+    
+    
 }
