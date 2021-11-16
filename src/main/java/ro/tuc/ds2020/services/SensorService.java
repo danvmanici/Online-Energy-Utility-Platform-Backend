@@ -32,9 +32,7 @@ public class SensorService {
 
     public List<SensorDTO> findSensors() {
         List<Sensor> sensorList = sensorRepository.findAll();
-        return sensorList.stream()
-                .map(SensorBuilder::toSensorDTO)
-                .collect(Collectors.toList());
+        return sensorList.stream().map(SensorBuilder::toSensorDTO).collect(Collectors.toList());
     }
 
     public SensorDTO findSensorById(UUID id) {
@@ -61,18 +59,18 @@ public class SensorService {
         return id;
     }
 
-    public UUID update(SensorDTO sensor){
+    public UUID update(SensorDTO sensor) {
         Sensor oldSensor = sensorRepository.findById(sensor.getId()).orElse(null);
         assert oldSensor != null;
         oldSensor.setMax_value(sensor.getMax_value());
         oldSensor.setDescription(sensor.getDescription());
-        oldSensor=sensorRepository.save(oldSensor);
-        return  oldSensor.getId();
+        oldSensor = sensorRepository.save(oldSensor);
+        return oldSensor.getId();
     }
 
     public SensorDTO findSensorValue(String name) {
-   
+
         return SensorBuilder.toSensorDTO(sensorRepository.findSensorValue(name));
     }
-    
+
 }

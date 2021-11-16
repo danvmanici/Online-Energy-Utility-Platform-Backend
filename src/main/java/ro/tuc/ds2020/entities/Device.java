@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@Table(name="SmartDevice")
+@Table(name = "SmartDevice")
 public class Device implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -31,7 +31,7 @@ public class Device implements Serializable {
     private int average_energy_consumption;
 
     @ManyToOne
-    @JoinColumn(name="client_id")
+    @JoinColumn(name = "client_id")
     private Client client;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "smartDevice")
@@ -40,7 +40,8 @@ public class Device implements Serializable {
     public Device() {
     }
 
-    public Device(String description, String address, int maximum_energy_consumption, int average_energy_consumption, Client client, Sensor sensor) {
+    public Device(String description, String address, int maximum_energy_consumption, int average_energy_consumption,
+            Client client, Sensor sensor) {
         this.description = description;
         this.address = address;
         this.maximum_energy_consumption = maximum_energy_consumption;

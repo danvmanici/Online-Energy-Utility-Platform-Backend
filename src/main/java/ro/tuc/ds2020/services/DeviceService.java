@@ -26,7 +26,6 @@ public class DeviceService {
     @Autowired
     private ClientRepository clientRepository;
 
-
     @Autowired
     public DeviceService(DeviceRepository smartDeviceRepository) {
         this.smartDeviceRepository = smartDeviceRepository;
@@ -34,12 +33,10 @@ public class DeviceService {
 
     public List<DeviceDTO> findSmartDevice() {
         List<Device> smartDeviceList = smartDeviceRepository.findAll();
-        return smartDeviceList.stream()
-                .map(DeviceBuilder::toSmartDeviceDTO)
-                .collect(Collectors.toList());
+        return smartDeviceList.stream().map(DeviceBuilder::toSmartDeviceDTO).collect(Collectors.toList());
     }
 
-    public DeviceDTO findSmartDeviceById(UUID id){
+    public DeviceDTO findSmartDeviceById(UUID id) {
         Optional<Device> prosumerOptional = smartDeviceRepository.findById(id);
         if (!prosumerOptional.isPresent()) {
             LOGGER.error("SmartDevice with id {} was not found in db", id);
@@ -48,10 +45,9 @@ public class DeviceService {
         return DeviceBuilder.toSmartDeviceDTO(prosumerOptional.get());
     }
 
-
     public UUID insert(DeviceDTO smartDeviceDTO) {
         Device smartDevice = DeviceBuilder.toEntity(smartDeviceDTO);
-        Client client =clientRepository.findById(smartDeviceDTO.getClient_id()).get();
+        Client client = clientRepository.findById(smartDeviceDTO.getClient_id()).get();
         smartDevice.setClient(client);
         smartDevice = smartDeviceRepository.save(smartDevice);
         LOGGER.debug("SmartDevice with id {} was inserted in db", smartDevice.getId());
@@ -65,14 +61,14 @@ public class DeviceService {
 
     }
 
-    public UUID update(DeviceDTO smartDevice){
+    public UUID update(DeviceDTO smartDevice) {
         Device oldSmartDevice = smartDeviceRepository.findById(smartDevice.getId()).orElse(null);
         assert oldSmartDevice != null;
         oldSmartDevice.setAddress(smartDevice.getAddress());
         oldSmartDevice.setDescription(smartDevice.getDescription());
         oldSmartDevice.setAverage_energy_consumption(smartDevice.getAverage_energy_consumption());
         oldSmartDevice.setMaximum_energy_consumption(smartDevice.getMaximum_energy_consumption());
-        oldSmartDevice=smartDeviceRepository.save(oldSmartDevice);
-        return  oldSmartDevice.getId();
+        oldSmartDevice = smartDeviceRepository.save(oldSmartDevice);
+        return oldSmartDevice.getId();
     }
 }
