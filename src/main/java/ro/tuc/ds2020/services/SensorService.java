@@ -44,6 +44,11 @@ public class SensorService {
         return SensorBuilder.toSensorDTO(prosumerOptional.get());
     }
 
+    public int findValueById(UUID id) {
+        Sensor prosumerOptional = sensorRepository.findById(id).get();
+        return prosumerOptional.getMax_value();
+    }
+
     public UUID insert(SensorDTO sensorDTO) {
         Sensor sensor = SensorBuilder.toEntity(sensorDTO);
         Device smartDevice = smartDeviceRepository.findById(sensorDTO.getSmartDevice_id()).get();

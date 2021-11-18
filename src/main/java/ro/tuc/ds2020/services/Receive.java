@@ -28,10 +28,12 @@ public class Receive {
 
     private final static String QUEUE_NAME = "demo";
     private final MonitoredRepository monitoredRepository;
+    private final SensorService sensorService;
 
     @Autowired
-    public Receive(MonitoredRepository monitoredRepository) {
+    public Receive(MonitoredRepository monitoredRepository, SensorService sensorService) {
         this.monitoredRepository = monitoredRepository;
+        this.sensorService = sensorService;
     }
 
     public List<Monitored> findMonitoredValues(String sensor_id) {
@@ -59,6 +61,10 @@ public class Receive {
                     Double measurement_value = (Double) obj.get("measurement_value");
                     Monitored monitored = new Monitored(sensor_id, measurement_value, timestamp);
                     monitored = monitoredRepository.save(monitored);
+                    int value = sensorService.findValueById(UUID.fromString(sensor_id));
+                    double v = value / 1.0f;
+                    if (v < measurement_value)
+                        System.out.println("ar putea fi calea ta");
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }

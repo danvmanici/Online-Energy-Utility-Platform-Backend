@@ -20,6 +20,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 @CrossOrigin
 @RequestMapping(value = "/monitored")
+
 public class MonitoredController {
 
     private final Receive service;
