@@ -1,6 +1,8 @@
 package ro.tuc.ds2020.services;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 
@@ -32,6 +34,11 @@ public class Receive {
         this.monitoredRepository = monitoredRepository;
     }
 
+    public List<Monitored> findMonitoredValues(String sensor_id) {
+        List<Monitored> list = monitoredRepository.findBySensor_id(sensor_id);
+        return list;
+    }
+
     @Scheduled(fixedRate = 10000)
     public void consume() throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
@@ -50,9 +57,6 @@ public class Receive {
                     String timestamp = (String) obj.get("timestamp");
                     String sensor_id = (String) obj.get("sensor_id");
                     Double measurement_value = (Double) obj.get("measurement_value");
-                    System.out.println(timestamp);
-                    System.out.println(sensor_id);
-                    System.out.println(measurement_value);
                     Monitored monitored = new Monitored(sensor_id, measurement_value, timestamp);
                     monitored = monitoredRepository.save(monitored);
                 } catch (ParseException e) {
