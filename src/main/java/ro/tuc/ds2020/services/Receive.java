@@ -1,6 +1,9 @@
 package ro.tuc.ds2020.services;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -43,8 +46,21 @@ public class Receive {
 
     @Scheduled(fixedRate = 10000)
     public void consume() throws IOException, TimeoutException {
+        String uri = "amqps://qbjjrhwp:k3hKwHC_Dyu1WWqkquopeIRc3b6Gpty0@goose.rmq2.cloudamqp.com/qbjjrhwp";
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("localhost");
+        // factory.setHost("localhost");
+        try {
+            factory.setUri(uri);
+        } catch (KeyManagementException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        } catch (NoSuchAlgorithmException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        } catch (URISyntaxException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
