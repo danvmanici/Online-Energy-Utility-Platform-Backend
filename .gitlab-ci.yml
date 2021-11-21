@@ -2,6 +2,8 @@ stages:
   - test
   - checkstyle
   - build
+  - deploy
+
 
 test:
   stage: test
@@ -33,5 +35,16 @@ build:
 
 variables:
   APP_NAME: mvd-ds2021-30642-backend
+
+deploy:
+  stage: deploy
+  image: ruby:2.4
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=spring-demo-ds2020 --api-key=$HEROKU_API_KEY
+  only:
+    - production
 
 
