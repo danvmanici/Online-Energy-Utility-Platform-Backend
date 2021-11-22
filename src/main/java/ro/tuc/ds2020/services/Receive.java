@@ -44,9 +44,9 @@ public class Receive {
         return list;
     }
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 60000)
     public void consume() throws IOException, TimeoutException {
-        String uri = "amqps://qbjjrhwp:k3hKwHC_Dyu1WWqkquopeIRc3b6Gpty0@goose.rmq2.cloudamqp.com/qbjjrhwp";
+        String uri = "amqps://tgkiiezs:Y7zVXOQQ7FHaZmkpk32bmC7kSL-0MIXr@goose.rmq2.cloudamqp.com/tgkiiezs";
         ConnectionFactory factory = new ConnectionFactory();
         // factory.setHost("localhost");
         try {
