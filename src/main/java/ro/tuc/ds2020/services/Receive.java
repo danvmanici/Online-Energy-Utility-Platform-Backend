@@ -46,21 +46,16 @@ public class Receive {
 
     @Scheduled(fixedRate = 60000)
     public void consume() throws IOException, TimeoutException {
-        String uri = "amqps://tgkiiezs:Y7zVXOQQ7FHaZmkpk32bmC7kSL-0MIXr@goose.rmq2.cloudamqp.com/tgkiiezs";
+        // String uri =
+        // "amqps://tgkiiezs:Y7zVXOQQ7FHaZmkpk32bmC7kSL-0MIXr@goose.rmq2.cloudamqp.com/tgkiiezs";
         ConnectionFactory factory = new ConnectionFactory();
-        // factory.setHost("localhost");
-        try {
-            factory.setUri(uri);
-        } catch (KeyManagementException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        } catch (NoSuchAlgorithmException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        } catch (URISyntaxException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
+        factory.setHost("localhost");
+        /*
+         * try { factory.setUri(uri); } catch (KeyManagementException e1) {
+         * e1.printStackTrace(); } catch (NoSuchAlgorithmException e1) {
+         * e1.printStackTrace(); } catch (URISyntaxException e1) { e1.printStackTrace();
+         * }
+         */
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
