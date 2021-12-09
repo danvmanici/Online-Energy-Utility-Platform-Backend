@@ -5,7 +5,6 @@ import java.net.URISyntaxException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 
@@ -89,6 +88,7 @@ public class Receive {
         };
         channel.basicConsume(QUEUE_NAME, true, consumer);
         // channel.close();
-        // connection.close();
+        connection.close();
     }
 }
+
