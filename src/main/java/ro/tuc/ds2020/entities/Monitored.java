@@ -44,6 +44,11 @@ public class Monitored implements Serializable {
         this.timestamp = timestamp;
     }
 
+    public Monitored(Double measurement_value, String timestamp) {
+        this.measurement_value = measurement_value;
+        this.timestamp = timestamp;
+    }
+
     public UUID getId() {
         return id;
     }
@@ -76,4 +81,8 @@ public class Monitored implements Serializable {
         this.measurement_value = measurement_value;
     }
 
+    @Override
+    public String toString() {
+        return timestamp + ',' + measurement_value;
+    }
 }
