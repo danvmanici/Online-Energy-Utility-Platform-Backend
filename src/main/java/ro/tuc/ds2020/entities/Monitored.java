@@ -31,8 +31,6 @@ public class Monitored implements Serializable {
     @Column(name = "timestamp", nullable = false)
     private String timestamp;
 
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Device> devices;
 
     public Monitored() {
 
